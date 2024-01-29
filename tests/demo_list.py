@@ -24,29 +24,33 @@ log.addHandler(handler)
 funcli.log = log
 
 
-class Value(enum.Enum):
-	value1 = 1
-	value2 = 2
-
-
-def an_enum(value: Value):
+def an_unspecified_list(a_list:list):
 	"""
-	function with a Value
-	:param value:
+	function with a list of unknown types
+	:param a_list:
 	:return:
 	"""
-	print(f"result={value.name}")
+	print(f"result={a_list=}")
 
-def an_enum_list(value: list[Value]):
+
+def an_int_list(a_list:list[int]):
 	"""
-	function with a Value
-	:param value:
+	function with a list of int
+	:param a_list:
 	:return:
 	"""
-	print(f"result={value}")
+	print(f"result={a_list=}")
 
+
+def an_str_list(a_list:list[str]):
+	"""
+	function with a list of str
+	:param a_list:
+	:return:
+	"""
+	print(f"result={a_list=}")
 
 
 if __name__ == "__main__":
-	funcli.fun_to_cli([an_enum, an_enum_list])
+	funcli.fun_to_cli([an_unspecified_list, an_int_list, an_str_list])
 

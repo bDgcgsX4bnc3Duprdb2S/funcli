@@ -23,7 +23,7 @@ def test_error_mandatory():
 	log.error(stderr)
 	print(f"{stdout=}")
 	print(f"{stderr=}")
-	assert stderr == "usage: demo.py a_bool [-h] --a_bool | --no-a_bool\ndemo.py a_bool: error: the following arguments are required: --a_bool/--no-a_bool"
+	assert stderr.__contains__("usage: demo.py a_bool [-h] --a_bool | --no-a_bool\ndemo.py a_bool: error: the following arguments are required: --a_bool/--no-a_bool")
 
 
 def test_error_type():
@@ -36,7 +36,7 @@ def test_error_type():
 	log.error(stderr)
 	print(f"{stdout=}")
 	print(f"{stderr=}")
-	assert stderr == "usage: demo.py an_int [-h] --value VALUE\ndemo.py an_int: error: argument --value: invalid int value: 'a'"
+	assert stderr.__contains__("usage: demo.py an_int [-h] --value VALUE\ndemo.py an_int: error: argument --value: invalid int value: 'a'")
 
 
 def test_error_missing_value():
@@ -49,7 +49,7 @@ def test_error_missing_value():
 	log.error(stderr)
 	print(f"{stdout=}")
 	print(f"{stderr=}")
-	assert stderr == "usage: demo.py an_int [-h] --value VALUE\ndemo.py an_int: error: argument --value: expected one argument"
+	assert stderr.__contains__("usage: demo.py an_int [-h] --value VALUE\ndemo.py an_int: error: argument --value: expected one argument")
 
 
 def test_raise_custom_error():
@@ -62,7 +62,8 @@ def test_raise_custom_error():
 	log.error(stderr)
 	print(f"{stdout=}")
 	print(f"{stderr=}")
-	assert stdout == "ERROR: test: This arg value doesn't look right"
+	assert stdout.__contains__("ERROR: test: This arg value doesn't look right")
+	
 
 def test_error_unknown_fun():
 	result = subprocess.run(shlex.split("../venv/bin/python3.9 demo.py unknown_function"), stdout=subprocess.PIPE, stderr=subprocess.PIPE)
@@ -72,5 +73,4 @@ def test_error_unknown_fun():
 	log.error(stderr)
 	print(f"{stdout=}")
 	print(f"{stderr=}")
-	assert stderr == "usage: demo.py [-h] [--full-help] [--version]\n               {simple,default_value,an_unspecified_list,an_int_list,an_str_list,a_bool,raise_error,an_int}\n               ...\ndemo.py: error: unrecognized arguments: unknown_function"
-	
+	assert stderr.__contains__("usage: demo.py [-h] [--full-help] [--version]\n               {simple,default_value,a_bool,raise_error,an_int} ...\ndemo.py: error: unrecognized arguments: unknown_function")

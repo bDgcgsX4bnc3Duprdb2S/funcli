@@ -1,14 +1,8 @@
+dans le help:
+    pour les list, le type est incorecte. peut-etre plutot mettre une colone single/multiple
+    pour les list d'enum ou les enums, l'affichage valeur par défaut est dégueu
 
-quid des list de boool???
-    ca ne devrait pas etre supporté ni techniquement ni logiquement
-    raise une exception claire à ce sujet
-quid des list de int???
 
-TODO
-    add support for Enum
-        auto check value type
-            accept name or value
-        autocomplete auto help
 TODO
     add support for param: str|float
     Error : ValueError: str | float is not callable

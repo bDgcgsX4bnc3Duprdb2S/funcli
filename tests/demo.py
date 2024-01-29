@@ -21,7 +21,7 @@ formatter = logging.Formatter('%(message)s')
 handler.setFormatter(formatter)
 log.addHandler(handler)
 
-# funcli.log = log
+funcli.log = log
 
 
 class Value(enum.Enum):
@@ -33,7 +33,7 @@ def simple():
 	"""
 	simple function with no args
 	"""
-	print("ok")
+	print("result=ok")
 
 
 def default_value(a_bool:bool=True, a_int: int=1, a_str:str="string", a_list:list[str]=["a", "b", "c"]):
@@ -45,41 +45,15 @@ def default_value(a_bool:bool=True, a_int: int=1, a_str:str="string", a_list:lis
 	:param a_list:
 	:return:
 	"""
-	print(f"{a_bool=}, {a_int=}, {a_str=}, {a_list=}")
+	print(f"result={a_bool=}, {a_int=}, {a_str=}, {a_list=}")
 
-
-def an_unspecified_list(a_list:list):
-	"""
-	function with a list of unknown types
-	:param a_list:
-	:return:
-	"""
-	print(f"{a_list=}")
-
-
-def an_int_list(a_list:list[int]):
-	"""
-	function with a list of int
-	:param a_list:
-	:return:
-	"""
-	print(f"{a_list=}")
-
-
-def an_str_list(a_list:list[str]):
-	"""
-	function with a list of str
-	:param a_list:
-	:return:
-	"""
-	print(f"{a_list=}")
 
 
 def a_bool(a_bool: bool):
 	"""
 	function with a bool
 	"""
-	print(a_bool)
+	print(f"result={a_bool}")
 
 def an_int(value:int):
 	"""
@@ -87,7 +61,7 @@ def an_int(value:int):
 	:param value:
 	:return:
 	"""
-	print(value)
+	print(f"result={value}")
 
 
 def raise_error():
@@ -99,5 +73,5 @@ def raise_error():
 
 
 if __name__ == "__main__":
-	funcli.fun_to_cli([simple, default_value, an_unspecified_list, an_int_list, an_str_list, a_bool, raise_error, an_int], "simple")
+	funcli.fun_to_cli([simple, default_value, a_bool, raise_error, an_int], "simple")
 

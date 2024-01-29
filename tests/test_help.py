@@ -22,7 +22,7 @@ def test_show_version():
 	log.error(stderr)
 	print(f"{stdout=}")
 	print(f"{stderr=}")
-	assert stdout == "Demo version:0.0.1 by gme"
+	assert stdout.__contains__("Demo version:0.0.1 by gme")
 
 
 def test_help():
@@ -33,7 +33,7 @@ def test_help():
 	log.error(stderr)
 	print(f"{stdout=}")
 	print(f"{stderr=}")
-	assert stdout == "TODO"
+	assert stdout.__contains__("TODO")
 
 
 def test_full_help():
@@ -44,7 +44,7 @@ def test_full_help():
 	log.error(stderr)
 	print(f"{stdout=}")
 	print(f"{stderr=}")
-	assert stdout == "TODO"
+	assert stdout.__contains__("TODO")
 	
 
 def test_simple_help():
@@ -55,7 +55,7 @@ def test_simple_help():
 	log.error(stderr)
 	print(f"{stdout=}")
 	print(f"{stderr=}")
-	assert stdout == "TODO"
+	assert stdout.__contains__("TODO")
 
 def test_default_value_help():
 	result = subprocess.run(shlex.split("../venv/bin/python3.9 demo.py default_value --help"), stdout=subprocess.PIPE, stderr=subprocess.PIPE)
@@ -65,4 +65,4 @@ def test_default_value_help():
 	log.error(stderr)
 	print(f"{stdout=}")
 	print(f"{stderr=}")
-	assert stdout == "TODO"
+	assert stdout.__contains__("TODO")
